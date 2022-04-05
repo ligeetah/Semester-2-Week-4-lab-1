@@ -6,42 +6,50 @@ using System.Threading.Tasks;
 
 namespace Tasks.kl
 {
-    internal class Student
+    internal class Book
     {
-        String Name;
-        int rollNumber;
-        float cGPA;
-        int matricMarks;
-        int fscMarks;
-        string homeTown;
-        bool isHostelite;
-        bool isTakingScholarship;
-        float ecat;
-        public Student() { }
-        public Student(string names,int roll,float gpa,int matric_marks,int fsc_marks,string add,bool hostel,bool scholar,float ect)
+        public string author;
+        public int pages;
+        public List<String> chapter=new List<string>();
+        public int bookmark;
+        public int price;
+        public bool available;
+        public Book() { }
+
+        public Book(string author, int pages, List<string> chapter, int bookmark, int price,bool available)
         {
-            Name = names;
-            rollNumber = roll;
-            cGPA = gpa;
-            matricMarks = matric_marks;
-            fscMarks = fsc_marks;
-            homeTown = add;
-            isHostelite = hostel;
-            isTakingScholarship = scholar;
-            ecat = ect;
+            this.author = author;
+            this.pages = pages;
+            this.chapter = chapter;
+            this.bookmark = bookmark;
+            this.price = price;
+            this.available=available;
         }
-        public float calculate_merit()
+        public string getChapter(int chapter_num)
         {
-            float merit = (fscMarks / 1100F * 60F + ecat / 400F * 40);
-            return merit;
+            return chapter[chapter_num - 1];
         }
-        public bool is_elegible(float merit)
+        public int get_bookmark()
         {
-            if(merit > 80 && isHostelite == true && isTakingScholarship == false)
-            {
-                return true;
-            }
-            return false;
+            return bookmark;
+        }
+        public void set_bookmark(int page)
+        {
+            bookmark=page;
+        }
+        public bool is_available()
+        {
+            return available;
+        }
+        public int get_price()
+        {
+            return price;
+        }
+        public void set_price(int price)
+        {
+            this.price = price;
         }
     }
+    
+
 }
